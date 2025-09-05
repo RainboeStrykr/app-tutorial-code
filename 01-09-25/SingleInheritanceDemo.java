@@ -1,100 +1,81 @@
-// Base class Teacher
+// Base class Teacher - This is the parent class that contains common properties and methods
+
 class Teacher {
+
+    // Protected variables - accessible by child classes but not by outside classes
     protected String name;
     protected String subject;
-    
-    // Constructor
+
+    // Constructor - This method is called when a Teacher object is created
+    // It initializes the name and subject of the teacher
     public Teacher(String name, String subject) {
         this.name = name;
         this.subject = subject;
     }
-    
-    // Getter methods
-    public String getName() {
-        return name;
-    }
-    
-    public String getSubject() {
-        return subject;
-    }
-    
-    // Method to display teacher details
+
+    // Method to display teacher information
+    // This method can be overridden by child classes to add more details
     public void displayDetails() {
-        System.out.println("Teacher Name: " + name);
-        System.out.println("Subject: " + subject);
+        System.out.println("Name: " + name + ", Subject: " + subject);
     }
-    
-    // Method to teach
+
+    // Method that represents the teaching action
+    // This method will be inherited by all child classes
     public void teach() {
         System.out.println(name + " is teaching " + subject);
     }
 }
 
-// Derived class MathTeacher that inherits from Teacher
+// Derived class MathTeacher - This is the child class that inherits from Teacher
+// The 'extends' keyword establishes the inheritance relationship
 class MathTeacher extends Teacher {
+
+    // Private variable specific to MathTeacher - not accessible outside this class
     private int numberOfClasses;
-    
-    // Constructor
+
+    // Constructor for MathTeacher - This calls the parent constructor first
+    // 'super()' is used to call the parent class constructor
     public MathTeacher(String name, int numberOfClasses) {
-        super(name, "Mathematics"); // Call parent constructor
-        this.numberOfClasses = numberOfClasses;
+        super(name, "Mathematics"); // Call parent constructor with name and "Mathematics"
+        this.numberOfClasses = numberOfClasses; // Initialize child-specific variable
     }
-    
-    // Getter for numberOfClasses
-    public int getNumberOfClasses() {
-        return numberOfClasses;
-    }
-    
-    // Setter for numberOfClasses
-    public void setNumberOfClasses(int numberOfClasses) {
-        this.numberOfClasses = numberOfClasses;
-    }
-    
-    // Override displayDetails method to include additional info
+
+    // Overridden method - This replaces the parent's displayDetails method
+    // @Override annotation ensures we're actually overriding a parent method
     @Override
     public void displayDetails() {
-        super.displayDetails(); // Call parent method
-        System.out.println("Number of Classes Handled: " + numberOfClasses);
+        super.displayDetails(); // Call parent's displayDetails method first
+        System.out.println("Classes handled: " + numberOfClasses); // Add child-specific info
     }
-    
-    // Additional method specific to MathTeacher
+
+    // Child-specific method - This method is unique to MathTeacher class
+    // It's not inherited from parent, it's a new functionality added by child
     public void solveMathProblem() {
-        System.out.println(name + " is solving mathematical problems for students");
-    }
-    
-    // Method to show class schedule
-    public void showSchedule() {
-        System.out.println(name + " handles " + numberOfClasses + " mathematics classes");
+        System.out.println(name + " is solving math problems");
     }
 }
 
-// Main class to demonstrate single inheritance
+// Main class demonstrating single inheritance
 public class SingleInheritanceDemo {
+
+    // Main method - Entry point of the program where execution begins
+    // This method demonstrates how inheritance works in practice
     public static void main(String[] args) {
-        System.out.println("Single Inheritance Demo");
-        
-        // Create a Teacher object
-        Teacher teacher1 = new Teacher("Mr Ravi", "Java");
-        teacher1.displayDetails();
-        teacher1.teach();
-        
-        System.out.println("\n");
-        
-        // Create a MathTeacher object
-        MathTeacher mathTeacher = new MathTeacher("Mr Vikas", 5);
-        mathTeacher.displayDetails(); // Calls overridden method
-        mathTeacher.teach(); // Inherited method
-        mathTeacher.solveMathProblem(); // MathTeacher specific method
-        mathTeacher.showSchedule(); // MathTeacher specific method
-        
-        System.out.println("\n");
-        
-        // Demonstrate polymorphism
-        System.out.println("Polymorphism Demo:");
-        Teacher teacher2 = new MathTeacher("Mr Anand", 3);
-        teacher2.displayDetails(); // Calls MathTeacher's overridden method
-        teacher2.teach(); // Inherited method
-        
-        System.out.println("\nInheritance successfully demonstrated!");
+        System.out.println("=== Single Inheritance Demo ===\n");
+
+        // Creating an object of the base class (Teacher)
+        // This shows how the parent class works independently
+        Teacher teacher = new Teacher("John", "English");
+        teacher.displayDetails(); // Calls Teacher's displayDetails method
+        teacher.teach(); // Calls Teacher's teach method
+
+        // Creating an object of the derived class (MathTeacher)
+        // This demonstrates inheritance - MathTeacher gets all Teacher's properties and methods
+        MathTeacher mathTeacher = new MathTeacher("Sarah", 5);
+        mathTeacher.displayDetails(); // Calls overridden method (MathTeacher's version)
+        mathTeacher.teach(); // Calls inherited method (Teacher's teach method)
+        mathTeacher.solveMathProblem(); // Calls child-specific method (only in MathTeacher)
+
+        System.out.println("\nSingle inheritance demonstrated!");
     }
 }
