@@ -14,7 +14,6 @@ class Bank {
         System.out.println(bankName + " - Interest Rate: " + rateOfInterest() + "%");
     }
 }
-
 // SBI subclass
 class SBI extends Bank {
     public SBI() {
