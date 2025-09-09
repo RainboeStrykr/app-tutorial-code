@@ -7,14 +7,13 @@ class Bank {
     }
     
     public double rateOfInterest() {
-        return 5.0; // Default rate
+        return 5.0;
     }
     
     public void displayRate() {
         System.out.println(bankName + " - Interest Rate: " + rateOfInterest() + "%");
     }
 }
-// SBI subclass
 class SBI extends Bank {
     public SBI() {
         super("SBI");
@@ -25,8 +24,6 @@ class SBI extends Bank {
         return 8.5;
     }
 }
-
-// ICICI subclass
 class ICICI extends Bank {
     public ICICI() {
         super("ICICI");
@@ -37,8 +34,6 @@ class ICICI extends Bank {
         return 9.0;
     }
 }
-
-// HDFC subclass
 class HDFC extends Bank {
     public HDFC() {
         super("HDFC");
@@ -49,8 +44,6 @@ class HDFC extends Bank {
         return 8.8;
     }
 }
-
-// Runnable task for bank operations
 class BankTask implements Runnable {
     private Bank bank;
     
@@ -67,23 +60,17 @@ class BankTask implements Runnable {
 // Main class demonstrating runtime polymorphism
 public class RuntimePolymorphismDemo {
     public static void main(String[] args) {
-        System.out.println("=== Runtime Polymorphism Demo ===\n");
+        System.out.println("Runtime Polymorphism Demo:\n");
         
-        // Create bank objects (runtime polymorphism)
         Bank sbi = new SBI();
         Bank icici = new ICICI();
         Bank hdfc = new HDFC();
-        
-        // Create threads with Runnable
         Thread t1 = new Thread(new BankTask(sbi));
         Thread t2 = new Thread(new BankTask(icici));
         Thread t3 = new Thread(new BankTask(hdfc));
-        
-        // Start threads
         t1.start();
         t2.start();
         t3.start();
         
-        System.out.println("\nRuntime polymorphism demonstrated using method overriding!");
     }
 }
