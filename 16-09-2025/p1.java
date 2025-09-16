@@ -12,7 +12,7 @@ public class p1 {
             System.out.println("✅ MySQL Driver Loaded");
 
             // Connect to MySQL DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurantdb", "root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurantdb", "root", "abhiraj27");
             stmt = conn.createStatement();
             System.out.println("✅ MySQL Connection Established");
 
@@ -26,7 +26,10 @@ public class p1 {
             stmt.executeUpdate(createTable);
             System.out.println("✅ Table Created");
 
-            // 2. Insert Orders
+            // 2. Clear existing data and insert fresh orders
+            stmt.executeUpdate("DELETE FROM Orders");
+            System.out.println("✅ Existing data cleared");
+
             String insert1 = "INSERT INTO Orders VALUES (101, 'Alice', 'Pizza', 250.50, 'Pending')";
             String insert2 = "INSERT INTO Orders VALUES (102, 'Bob', 'Burger', 120.00, 'Completed')";
             String insert3 = "INSERT INTO Orders VALUES (103, 'Alan', 'Pasta', 180.00, 'Pending')";

@@ -5,7 +5,7 @@ public class WorkingMySQLDemo {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/";
     private static final String DB_NAME = "restaurantdb";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "password"; // CHANGE THIS TO YOUR MYSQL PASSWORD
+    private static final String PASSWORD = "abhiraj27"; // CHANGE THIS TO YOUR MYSQL PASSWORD
     
     public static void main(String[] args) {
         Connection conn = null;
