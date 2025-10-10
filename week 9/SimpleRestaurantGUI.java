@@ -97,7 +97,7 @@ public class SimpleRestaurantGUI extends JFrame {
 
         return panel;
     }
-
+    
     private JPanel createTablePanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Orders List"));
@@ -290,19 +290,6 @@ public class SimpleRestaurantGUI extends JFrame {
             refreshTable();
             log("All orders cleared (" + count + " orders deleted)");
         }
-    }
-
-    private void loadSampleData() {
-        orders.clear();
-
-        orders.add(new Order(101, "Alice", "Pizza", 25.50, "Pending"));
-        orders.add(new Order(102, "Bob", "Burger", 12.00, "Completed"));
-        orders.add(new Order(103, "Alan", "Pasta", 18.00, "Pending"));
-        orders.add(new Order(104, "Alice", "Salad", 8.50, "Completed"));
-        orders.add(new Order(105, "Charlie", "Sandwich", 15.75, "Pending"));
-
-        refreshTable();
-        log("Sample data loaded (" + orders.size() + " orders)");
     }
 
     private void refreshTable() {
