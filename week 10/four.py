@@ -1,5 +1,7 @@
-numbers = [5, 10, 15, 20, 25]
+with open("data.txt") as f:
+    lines = [line.strip() for line in f if line.strip()]
 
+numbers = list(map(int, lines[1].split()))
 added = list(map(lambda x: x + 10, numbers))
-
-print("After adding 10:", added)
+print("Original Numbers:", numbers)
+print("After Adding 10:", added)
